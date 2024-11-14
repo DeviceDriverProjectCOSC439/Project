@@ -19,8 +19,6 @@ Try fdisk -l everytime you insert the device and confirm its consistency as /dev
 
 When writing code, target: /dev/vda (writing, reading, encrypting)
 
-Enrcyption:
-For encryption, we will be using the openSSL encryption library.
-openSSL comes installed with ubuntu but it is importnat that you install the libraries with this command:  ```sudo apt install libssl-dev```
+
 
 
