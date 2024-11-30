@@ -19,6 +19,8 @@ Try fdisk -l everytime you insert the device and confirm its consistency as /dev
 
 When writing code, target: /dev/vda (writing, reading, encrypting)
 
+encryption library: https://github.com/google/fscrypt?tab=readme-ov-file#building-and-installing
+
 
 
 
