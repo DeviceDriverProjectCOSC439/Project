@@ -37,7 +37,7 @@ then navigate into the directory with ```cd fscrypt```
 9. We can now initialize our usb to support this filesystem encryption library by running the command ```sudo fscrypt setup /mnt```
 10. Now, create a directory within /mnt named whatever you want, in this case I will call it secure, using this command ```sudo mkdir /mnt/secure```
 11. From there we can add the fscrypt library to that directory with this command ```sudo fscrypt encrypt /mnt/secure``` this will prompt you with terminal commands to setup a private key. Hit 2, then create a username and private key as you are prompted.
-12. For copying from PC to USB, the USB directory needs to be unlocked to grant write privledges using this command ```sudo fscrypt unlock /mnt```
+12. For copying from PC to USB, the USB directory needs to be unlocked to grant write privledges using this command ```sudo fscrypt unlock /mnt/secure```
 
 
 
