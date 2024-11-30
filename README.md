@@ -36,10 +36,8 @@ then navigate into the directory with ```cd fscrypt```
 8. Once the filesystem version has been changed, we can mount the usb using the command ```sudo mount /dev/sdb1 /mnt``` Note: the name of your partition of your USB may not be called sdb1. This can be checked using this command ```lsblk```
 9. We can now initialize our usb to support this filesystem encryption library by running the command sudo ```fscrypt setup /mnt```
 10. Now, create a secure directory within /mnt using the command ```sudo mkdir /mnt/secure```
-11. From there we can add the fscrypt library to that directory with this command ```sudo fscrypt encrypt /mnt/secure```
-
-
-For copying from PC to USB, the USB directory needs to be unlocked to grant write privledges using this command ```sudo fscrypt unlock /mnt```
+11. From there we can add the fscrypt library to that directory with this command ```sudo fscrypt encrypt /mnt/secure``` this will prompt you with terminal commands to setup a private key. Hit 2, then create a username and private key as you are prompted.
+12. For copying from PC to USB, the USB directory needs to be unlocked to grant write privledges using this command ```sudo fscrypt unlock /mnt```
 
 
 
