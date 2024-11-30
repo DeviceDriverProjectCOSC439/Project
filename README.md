@@ -30,11 +30,14 @@ In terminal run the following commands:
 2. ```sudo apt install build-essential libssl-dev libuuid1``` this is to install the runtime dependencies for the encryption library
 3. Then, you want to clone the git repo with the following command: ```git clone https://github.com/google/fscrypt.git --recursive```
 then navigate into the directory with ```cd fscrypt```
-4. Once in the directory, run the ```sudo make install``` command
-5. Then, you must setup the config file so that it can be called within your USB's directory, run command ```sudo fscrypt setup```
-6. Now we need to mount the USB, but before we can do that we need to make sure that our USB is using the correct linux filesystem. This library requires ext4, but most USB drives come with the vfat file system installed. This although, can be changed. To do so, make sure that your USB has not been mounted and does not have any processes running, then run the command ```sudo mkfs.ext4 /dev/sdb1``` Note: this will delete any files that are on the USB so relocate files if necessary.
-7. Once the filesystem version has been changed, we can mount the usb using the command ```sudo mount /dev/sdb1 /mnt``` Note: the name of your partition of your USB may not be called sdb1. This can be checked using this command ```lsblk```
-8. Lastly, we can initialize our usb to support this filesystem encryption library by running the command sudo ```fscrypt setup /mnt```
+5. Once in the directory, run the ```make``` then install the m4 dependency with ```sudo apt install m4``` ```sudo make install``` command
+6. Then, you must setup the config file so that it can be called within your USB's directory, run command ```sudo fscrypt setup```
+7. Now we need to mount the USB, but before we can do that we need to make sure that our USB is using the correct linux filesystem. This library requires ext4, but most USB drives come with the vfat file system installed. This although, can be changed. To do so, make sure that your USB has not been mounted and does not have any processes running, then run the command ```sudo mkfs.ext4 /dev/sdb1``` Note: this will delete any files that are on the USB so relocate files if necessary.
+8. Once the filesystem version has been changed, we can mount the usb using the command ```sudo mount /dev/sdb1 /mnt``` Note: the name of your partition of your USB may not be called sdb1. This can be checked using this command ```lsblk```
+9. We can now initialize our usb to support this filesystem encryption library by running the command sudo ```fscrypt setup /mnt```
+10. Now, create a secure directory within /mnt using the command ```sudo mkdir /mnt/secure```
+11. From there we can add the fscrypt library to that directory with this command ```sudo fscrypt encrypt /mnt/secure```
+
 
 For copying from PC to USB, the USB directory needs to be unlocked to grant write privledges using this command ```sudo fscrypt unlock /mnt```
 
