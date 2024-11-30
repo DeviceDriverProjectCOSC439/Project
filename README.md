@@ -21,7 +21,10 @@ When writing code, target: /dev/vda (writing, reading, encrypting)
 
 encryption library: https://github.com/google/fscrypt?tab=readme-ov-file#building-and-installing
 
-Instruction for setting up encryption library on USB.
+<h2>Instructions for setting up encryption library on USB.</h2>
+
+encryption library: https://github.com/google/fscrypt?tab=readme-ov-file#building-and-installing
+
 In terminal run the following commands:
 1. ```sudo apt update```
 2. ```sudo apt install build-essential libssl-dev libuuid1``` this is to install the runtime dependencies for the encryption library
