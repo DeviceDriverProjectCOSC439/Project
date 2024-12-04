@@ -1,10 +1,8 @@
-TARGET_MODULE:=usb_encrypt
-
-USER_APP:=user_app
+TARGET_MODULE:=user_app
 
 # If we running by kernel building system
 ifneq ($(KERNELRELEASE),)
-	$(TARGET_MODULE)-objs := usb_encrypt.o
+	$(TARGET_MODULE)-objs := user_app.o
 	obj-m := $(TARGET_MODULE).o
 
 # If we are running without kernel build system
