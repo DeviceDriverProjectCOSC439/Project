@@ -1,41 +1,30 @@
-TARGET_MODULE:=user_app
+TARGET_MODULE := simple-module
 
-# If we running by kernel building system
+# If we are using the kernel build system
 ifneq ($(KERNELRELEASE),)
-	$(TARGET_MODULE)-objs := user_app.o
-	obj-m := $(TARGET_MODULE).o
+    $(TARGET_MODULE)-objs := main.o
+    obj-m := $(TARGET_MODULE).o
 
-# If we are running without kernel build system
+# If we are not using the kernel build system (i.e., from the command line)
 else
-	BUILDSYSTEM_DIR:=/lib/modules/$(shell uname -r)/build
-	PWD:=$(shell pwd)
+    BUILDSYSTEM_DIR := /lib/modules/$(shell uname -r)/build
+    PWD := $(shell pwd)
 
-
-all : kernel user_app
-
-kernel:
-# run kernel build system to make module
+all:
+	# Build the module using the kernel build system
 	$(MAKE) -C $(BUILDSYSTEM_DIR) M=$(PWD) modules
 
-user_app:
-# Build the user application
-	gcc -o $(USER_APP) user_app.c
-
 clean:
-# run kernel build system to cleanup in current directory
+	# Clean up generated files
 	$(MAKE) -C $(BUILDSYSTEM_DIR) M=$(PWD) clean
-# Clean user application
-	rm -f $(USER_APP)
 
 load:
-	@echo "Loading Module..."
-	insmod $(TARGET_MODULE).ko
-	dmesg | tail -n 10
+	# Load the module
+	insmod ./$(TARGET_MODULE).ko
 
 unload:
-	@echo "Unloading Module..."
+	# Unload the module
 	rmmod ./$(TARGET_MODULE).ko
-	dmesg | tail -n 10
 
 endif
 
