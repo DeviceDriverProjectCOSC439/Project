@@ -18,7 +18,10 @@ int main(int argc, char *argv[]) {
              file_path, encrypted_file);
 
     int ret = system(openssl_command);
-
+    
+    if (ret == 0){
+        remove(file_path);
+    }
 
     return 0;
 }
