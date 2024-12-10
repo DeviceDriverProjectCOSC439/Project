@@ -3,6 +3,7 @@
 <h3> There are a few dependencies that must be met before this is possible </h3>
 
 1. This must take place on a Linux Machine
+2. USB must be formatted to ext4
 3. OpenSSL must be installed  ```sudo apt install openssl```
 4. Linux Headers must be installed ```sudo apt install linux-headers-$(uname -r)```
 5. Inotify Tools must be installed ```sudo apt install inotify-tools```
