@@ -1,4 +1,4 @@
-This is a device driver that automates encrypting and decrypting files when there are moved over to a USB drive.
+<h1> Device driver that automates encrypting and decrypting files when there are moved over to a USB drive. </h1>
 
 <h3> There are a few dependencies that must be met before this is possible </h3>
 
