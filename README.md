@@ -5,8 +5,9 @@
 1. This must take place on a Linux Machine
 3. OpenSSL must be installed  ```sudo apt install openssl```
 4. Linux Headers must be installed ```sudo apt install linux-headers-$(uname -r)```
-5. A C compiler must be installed as well as Makefile tools
-6. It is crucial that all of the paths in the ```main.c```, ```script.sh```, ```encrypt.c```, and ```decrypt.c``` are altered to match your device.
+5. Inotify Tools must be installed ```sudo apt install inotify-tools```
+6. A C compiler must be installed as well as Makefile tools
+7. It is crucial that all of the paths in the ```main.c```, ```script.sh```, ```encrypt.c```, and ```decrypt.c``` are altered to match your device.
 
 <h3> Building the device driver </h3>
 
