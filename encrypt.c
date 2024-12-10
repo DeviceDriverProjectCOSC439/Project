@@ -2,24 +2,20 @@
 #include <stdlib.h>
 
 int main(int argc, char *argv[]) {
-    if (argc < 2) {
-        fprintf(stderr, "Usage: %s <file_path>\n", argv[0]);
-        return 1;
-    }
 
     char *file_path = argv[1];
 
     char encrypted_file[512];
-    snprintf(encrypted_file, sizeof(encrypted_file), "%s.enc", file_path);  
+    snprintf(encrypted_file, sizeof(encrypted_file), "%s.encrypted", file_path);  
    
     char openssl_command[1024];
     snprintf(openssl_command, sizeof(openssl_command),
-             "openssl pkeyutl -encrypt -pubin -inkey /home/joaquin/Documents/final/SimpleLinuxDriver/public.key -in \"%s\" -out \"%s\"",
+             "openssl pkeyutl -encrypt -pubin -inkey /home/joaquin/Documents/Project/public.key -in \"%s\" -out \"%s\"",
              file_path, encrypted_file);
 
-    int ret = system(openssl_command);
+    int run = system(openssl_command);
     
-    if (ret == 0){
+    if (run == 0){
         remove(file_path);
     }
 

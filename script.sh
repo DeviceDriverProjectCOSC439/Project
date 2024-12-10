@@ -1,21 +1,35 @@
 #!/bin/bash
 
-MONITOR="/media/joaquin/usb"
-ENCRYPT="/home/joaquin/Documents/final/SimpleLinuxDriver/encrypt"
-DECRYPT="/home/joaquin/Documents/final/SimpleLinuxDriver/decrypt"
+MONITOR_USB="/media/joaquin/usb"
+MONITOR_DESKTOP="/home/joaquin/Desktop"
+ENCRYPT="/home/joaquin/Documents/Project/encrypt"
+DECRYPT="/home/joaquin/Documents/Project/decrypt"
 INOTIFYWAIT="/usr/bin/inotifywait"
 
-$INOTIFYWAIT -m "$MONITOR" -e create -e moved_from |
+usb_monitoring(){
+$INOTIFYWAIT -m "$MONITOR_USB" -e create|
 while read -r directory event filename; do
-    echo "File '$filename' was $event in $directory"
-    
-    full_file_path="$directory$filename"
 
+    full_file_path="$directory$filename"
     if [[ $event == "CREATE" ]]; then
         bash -c "$ENCRYPT $full_file_path; exec bash"
     fi
 
-    if [[ $event == "MOVED_FROM" ]]; then
+done
+}
+
+desktop_monitoring(){
+$INOTIFYWAIT -m "$MONITOR_DESKTOP" -e create|
+while read -r directory event filename; do
+
+    full_file_path="$directory$filename"
+    if [[ $event == "CREATE" ]]; then
         bash -c "$DECRYPT $full_file_path; exec bash"
     fi
+    
 done
+}
+
+usb_monitoring &
+desktop_monitoring &
+wait
